@@ -2,5 +2,5 @@
 
 namespace TypescriptCodeDom.CodeExpressions.ArrayCreate
 {
-    public interface ITypescriptArrayCreateExpression : IExpression<CodeArrayCreateExpression> { }
+    public interface ITypescriptArrayCreateExpression : IExpression { }
 }

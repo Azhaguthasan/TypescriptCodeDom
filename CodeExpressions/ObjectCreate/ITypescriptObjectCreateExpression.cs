@@ -2,5 +2,5 @@
 
 namespace TypescriptCodeDom.CodeExpressions.ObjectCreate
 {
-    public interface ITypescriptObjectCreateExpression : IExpression<CodeObjectCreateExpression> { }
+    public interface ITypescriptObjectCreateExpression : IExpression { }
 }

@@ -2,5 +2,5 @@ using System.CodeDom;
 
 namespace TypescriptCodeDom.CodeExpressions.DelegateInvoke
 {
-    public interface ITypescriptDelegateInvokeExpression : IExpression<CodeDelegateInvokeExpression> { }
+    public interface ITypescriptDelegateInvokeExpression : IExpression { }
 }

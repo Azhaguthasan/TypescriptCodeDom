@@ -7,17 +7,24 @@ namespace TypescriptCodeDom.CodeExpressions.ParameterDeclaration
 {
     class TypescriptParameterDeclarationExpression : ITypescriptParameterDeclarationExpression
     {
+        private readonly CodeParameterDeclarationExpression _codeExpression;
+        private readonly CodeGeneratorOptions _options;
         private ITypescriptTypeMapper _typescriptTypeMapper;
 
-        public TypescriptParameterDeclarationExpression(ITypescriptTypeMapper typescriptTypeMapper)
+        public TypescriptParameterDeclarationExpression(
+            CodeParameterDeclarationExpression codeExpression,
+            CodeGeneratorOptions options,
+            ITypescriptTypeMapper typescriptTypeMapper)
         {
+            _codeExpression = codeExpression;
+            _options = options;
             _typescriptTypeMapper = typescriptTypeMapper;
         }
 
-        public string Evaluate(CodeParameterDeclarationExpression codeExpression, CodeGeneratorOptions options)
+        public string Evaluate()
         {
-            var type = _typescriptTypeMapper.GetTypeOutput(codeExpression.Type);
-            return $"{codeExpression.Name}: {type}";
+            var type = _typescriptTypeMapper.GetTypeOutput(_codeExpression.Type);
+            return $"{_codeExpression.Name}: {type}";
         }
     }
 }  

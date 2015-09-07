@@ -1,4 +1,5 @@
 using System.CodeDom;
+using System.Linq;
 using TypescriptCodeDom.CodeExpressions;
 using TypescriptCodeDom.Common;
 using TypescriptCodeDom.Common.TypeMapper;
@@ -24,8 +25,14 @@ namespace TypescriptCodeDom.CodeTypeMembers
 
         public string Expand()
         {
-            string fieldDeclaration = $"{_member.Name}: {_typescriptTypeMapper.GetTypeOutput(_member.Type)};";
-            var accessModifier = _member.GetAccessModifier();
+            var isEnum = !(bool)_member.UserData["GenerateFieldType"];
+            var shouldGenerateAccessModifier = (bool)_member.UserData["GenerateAccessModifier"];
+
+            if (isEnum)
+                return $"{_member.Name},";
+
+            string fieldDeclaration = $"{_member.Name.ConvertPascalCaseToCamelCase()}: {_typescriptTypeMapper.GetTypeOutput(_member.Type)};";
+            var accessModifier = shouldGenerateAccessModifier ? _member.GetAccessModifier() : string.Empty;
             return $"{accessModifier}{fieldDeclaration}";
         }
     }

@@ -7,27 +7,32 @@ namespace TypescriptCodeDom.CodeExpressions
 {
     public static class Extensions
     {
-        public static IEnumerable<string> GetParametersFromExpressions(this CodeExpressionCollection codeExpressions, IExpressionFactory expressionFactory, CodeGeneratorOptions options)
+        public static string GetParametersFromExpressions(this CodeExpressionCollection codeExpressions, IExpressionFactory expressionFactory, CodeGeneratorOptions options)
         {
-            return codeExpressions
+            var parametersFromExpressions = codeExpressions
                 .OfType<CodeExpression>()
                 .Select(parameter =>
                 {
-                    var parameterExpression = expressionFactory.GetExpression(parameter);
-                    return parameterExpression.Evaluate(parameter, options);
-                });
+                    var parameterExpression = expressionFactory.GetExpression(parameter, options);
+                    return parameterExpression.Evaluate();
+                }).ToList();
+            return string.Join(", ", parametersFromExpressions);
         }
 
-        public static IEnumerable<string> GetParametersFromExpressions(this CodeParameterDeclarationExpressionCollection codeExpressions, IExpressionFactory expressionFactory, CodeGeneratorOptions options)
+        public static string GetParametersFromExpressions(this CodeParameterDeclarationExpressionCollection codeExpressions, IExpressionFactory expressionFactory, CodeGeneratorOptions options)
         {
-            return codeExpressions
+            if (codeExpressions.Count <= 0)
+                return string.Empty;
+
+            var parametersFromExpressions = codeExpressions
                 .OfType<CodeParameterDeclarationExpression>()
                 .Select(parameter =>
                 {
-                    var parameterExpression = expressionFactory.GetExpression(parameter);
-                    return parameterExpression.Evaluate(parameter, options);
-                });
+                    var parameterExpression = expressionFactory.GetExpression(parameter, options);
+                    return parameterExpression.Evaluate();
+                })
+                .ToList();
+            return string.Join(", ", parametersFromExpressions);
         }
-
     }
 }

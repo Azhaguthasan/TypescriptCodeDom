@@ -5,6 +5,7 @@ using System.Linq;
 using TypescriptCodeDom.CodeExpressions;
 using TypescriptCodeDom.CodeStatements;
 using TypescriptCodeDom.CodeTypeParameters;
+using TypescriptCodeDom.Common;
 using TypescriptCodeDom.Common.TypeMapper;
 
 namespace TypescriptCodeDom.CodeTypeMembers
@@ -51,8 +52,13 @@ namespace TypescriptCodeDom.CodeTypeMembers
                 typeParametersExpression = $"<{string.Join(",", typeParameters)}>";
             }
 
-            return $"{_member.GetAccessModifier()} {_member.Name}{typeParametersExpression}({parameters}): {returnType}{{{statements}{Environment.NewLine}}}";
+            var shouldGenerateMethodBody = (bool)_member.UserData["GenerateMethodBody"];
+            var shouldGenerateAccessModifier = (bool)_member.UserData["GenerateAccessModifier"];
 
+            var accessModifier = shouldGenerateAccessModifier ? _member.GetAccessModifier() : string.Empty;
+            return shouldGenerateMethodBody 
+                ? $"{accessModifier} {_member.Name.ConvertPascalCaseToCamelCase()}{typeParametersExpression}({parameters}): {returnType}{{{Environment.NewLine}{statements}{Environment.NewLine}}}" 
+                : $"{accessModifier} {_member.Name.ConvertPascalCaseToCamelCase()}{typeParametersExpression}({parameters}): {returnType};";
         }
     }
 }

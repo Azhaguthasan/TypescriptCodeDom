@@ -28,7 +28,7 @@ namespace TypescriptCodeDom.CodeStatements
 
         public string Expand()
         {
-            var conditionExpression = _expressionFactory.GetExpression(_statement.Condition).Evaluate(_statement.Condition, _options);
+            var conditionExpression = _expressionFactory.GetExpression(_statement.Condition, _options).Evaluate();
             var trueStatements = _statement.TrueStatements.GetStatementsFromCollection(_statementFactory, _options);
             var falseStatements = _statement.FalseStatements.GetStatementsFromCollection(_statementFactory, _options);
 

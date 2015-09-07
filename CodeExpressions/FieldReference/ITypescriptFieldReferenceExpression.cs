@@ -2,5 +2,5 @@ using System.CodeDom;
 
 namespace TypescriptCodeDom.CodeExpressions.FieldReference
 {
-    public interface ITypescriptFieldReferenceExpression : IExpression<CodeFieldReferenceExpression> { }
+    public interface ITypescriptFieldReferenceExpression : IExpression { }
 }

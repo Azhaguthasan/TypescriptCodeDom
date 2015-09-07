@@ -31,7 +31,7 @@ namespace TypescriptCodeDom.CodeStatements
         public string Expand()
         {
             var type = _typescriptTypeMapper.GetTypeOutput(_statement.Type);
-            var initializationExpression = _expressionFactory.GetExpression(_statement.InitExpression).Evaluate(_statement.InitExpression, _options);
+            var initializationExpression = _expressionFactory.GetExpression(_statement.InitExpression, _options).Evaluate();
 
             return $"var {_statement.Name}: {type} = {initializationExpression};}}";
         }

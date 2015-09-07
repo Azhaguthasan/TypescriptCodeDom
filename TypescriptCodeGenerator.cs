@@ -93,10 +93,10 @@ namespace TypescriptCodeDom
 
         public void GenerateCodeFromExpression(CodeExpression codeExpression, TextWriter textWriter, CodeGeneratorOptions options)
         {
-            var expression = _expressionFactory.GetExpression(codeExpression);
-            textWriter.Write(expression.Evaluate(codeExpression, options));
+            var expression = _expressionFactory.GetExpression(codeExpression, options);
+            textWriter.Write(expression.Evaluate());
         }
-
+        
         public void GenerateCodeFromStatement(CodeStatement codeStatement, TextWriter textWriter, CodeGeneratorOptions options)
         {
             var statement = _statementFactory.GetStatement(codeStatement, options);

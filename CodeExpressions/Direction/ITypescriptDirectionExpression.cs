@@ -2,5 +2,5 @@
 
 namespace TypescriptCodeDom.CodeExpressions.Direction
 {
-    public interface ITypescriptDirectionExpression : IExpression<CodeDirectionExpression> { }
+    public interface ITypescriptDirectionExpression : IExpression { }
 }

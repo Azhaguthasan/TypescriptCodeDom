@@ -2,5 +2,5 @@
 
 namespace TypescriptCodeDom.CodeExpressions.PropertyReference
 {
-    public interface ITypescriptPropertyReferenceExpression : IExpression<CodePropertyReferenceExpression> { }
+    public interface ITypescriptPropertyReferenceExpression : IExpression { }
 }

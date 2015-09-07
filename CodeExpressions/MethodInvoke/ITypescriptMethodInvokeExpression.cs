@@ -2,5 +2,5 @@
 
 namespace TypescriptCodeDom.CodeExpressions.MethodInvoke
 {
-    public interface ITypescriptMethodInvokeExpression : IExpression<CodeMethodInvokeExpression> { }
+    public interface ITypescriptMethodInvokeExpression : IExpression { }
 }

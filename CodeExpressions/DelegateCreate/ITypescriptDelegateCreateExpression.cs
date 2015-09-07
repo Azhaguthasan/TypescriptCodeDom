@@ -2,5 +2,5 @@
 
 namespace TypescriptCodeDom.CodeExpressions.DelegateCreate
 {
-    public interface ITypescriptDelegateCreateExpression : IExpression<CodeDelegateCreateExpression> { }
+    public interface ITypescriptDelegateCreateExpression : IExpression { }
 }

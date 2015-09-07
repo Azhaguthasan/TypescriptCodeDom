@@ -2,5 +2,5 @@
 
 namespace TypescriptCodeDom.CodeExpressions.Snippet
 {
-    public interface ITypescriptSnippetExpression : IExpression<CodeSnippetExpression> { }
+    public interface ITypescriptSnippetExpression : IExpression { }
 }

@@ -7,20 +7,26 @@ namespace TypescriptCodeDom.CodeExpressions.DelegateInvoke
     class TypescriptDelegateInvokeExpression : ITypescriptDelegateInvokeExpression
     {
         private readonly IExpressionFactory _expressionFactory;
+        private readonly CodeDelegateInvokeExpression _codeExpression;
+        private readonly CodeGeneratorOptions _options;
 
         public TypescriptDelegateInvokeExpression(
-            IExpressionFactory expressionFactory)
+            IExpressionFactory expressionFactory,
+            CodeDelegateInvokeExpression codeExpression, 
+            CodeGeneratorOptions options)
         {
             _expressionFactory = expressionFactory;
+            _codeExpression = codeExpression;
+            _options = options;
         }
 
-        public string Evaluate(CodeDelegateInvokeExpression codeExpression, CodeGeneratorOptions options)
+        public string Evaluate()
         {
-            var parameters = codeExpression.Parameters.GetParametersFromExpressions(_expressionFactory, options);
+            var parameters = _codeExpression.Parameters.GetParametersFromExpressions(_expressionFactory, _options);
 
-            var targetObject = _expressionFactory.GetExpression(codeExpression.TargetObject);
+            var targetObject = _expressionFactory.GetExpression(_codeExpression.TargetObject, _options);
 
-            return $"{targetObject.Evaluate(codeExpression, options)}({string.Join(", ", parameters)})";
+            return $"{targetObject.Evaluate()}({parameters})";
         }
     }
 }

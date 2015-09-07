@@ -5,7 +5,18 @@ namespace TypescriptCodeDom.CodeExpressions.ThisReference
 {
     class TypescriptThisReferenceExpression : ITypescriptThisReferenceExpression
     {
-        public string Evaluate(CodeThisReferenceExpression codeExpression, CodeGeneratorOptions options)
+        private readonly CodeThisReferenceExpression _codeExpression;
+        private readonly CodeGeneratorOptions _options;
+
+        public TypescriptThisReferenceExpression(
+            CodeThisReferenceExpression codeExpression, 
+            CodeGeneratorOptions options)
+        {
+            _codeExpression = codeExpression;
+            _options = options;
+        }
+
+        public string Evaluate()
         {
             return "this";
         }

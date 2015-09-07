@@ -5,21 +5,18 @@ namespace TypescriptCodeDom.CodeExpressions.BaseReference
 {
     class TypescriptBaseReferenceExpression : ITypescriptBaseReferenceExpression
     {
-        private readonly IExpressionFactory _expressionFactory;
-        private readonly CodeBaseReferenceExpression _expression;
+        private readonly CodeBaseReferenceExpression _codeExpression;
         private readonly CodeGeneratorOptions _options;
 
         public TypescriptBaseReferenceExpression(
-            IExpressionFactory expressionFactory,
-            CodeBaseReferenceExpression expression,
+            CodeBaseReferenceExpression codeExpression, 
             CodeGeneratorOptions options)
         {
-            _expressionFactory = expressionFactory;
-            _expression = expression;
+            _codeExpression = codeExpression;
             _options = options;
         }
 
-        public string Evaluate(CodeBaseReferenceExpression codeExpression, CodeGeneratorOptions options)
+        public string Evaluate()
         {
             return "this";
         }

@@ -9,36 +9,44 @@ namespace TypescriptCodeDom.CodeExpressions.ArrayCreate
     class TypescriptArrayCreateExpression : ITypescriptArrayCreateExpression
     {
         private readonly IExpressionFactory _expressionFactory;
-        private readonly TypescriptTypeMapper _typescriptTypeMapper;
+        private readonly CodeArrayCreateExpression _codeExpression;
+        private readonly CodeGeneratorOptions _options;
+        private readonly ITypescriptTypeMapper _typescriptTypeMapper;
 
-        public TypescriptArrayCreateExpression(IExpressionFactory expressionFactory, TypescriptTypeMapper typescriptTypeMapper)
+        public TypescriptArrayCreateExpression(
+            IExpressionFactory expressionFactory,
+            CodeArrayCreateExpression codeExpression, 
+            CodeGeneratorOptions options,
+            ITypescriptTypeMapper typescriptTypeMapper)
         {
             _expressionFactory = expressionFactory;
+            _codeExpression = codeExpression;
+            _options = options;
             _typescriptTypeMapper = typescriptTypeMapper;
         }
 
-        public string Evaluate(CodeArrayCreateExpression codeExpression, CodeGeneratorOptions options)
+        public string Evaluate()
         {
             string sizeEvaluationString = string.Empty;
-            if (codeExpression.SizeExpression != null)
+            if (_codeExpression.SizeExpression != null)
             {
-                var sizeExpression = _expressionFactory.GetExpression(codeExpression);
-                sizeEvaluationString = sizeExpression.Evaluate(codeExpression, options);
+                var sizeExpression = _expressionFactory.GetExpression(_codeExpression, _options);
+                sizeEvaluationString = sizeExpression.Evaluate();
             }
-            else if (codeExpression.Size > 0)
+            else if (_codeExpression.Size > 0)
             {
-                sizeEvaluationString = codeExpression.Size.ToString();
+                sizeEvaluationString = _codeExpression.Size.ToString();
             }
 
-            var typeString = _typescriptTypeMapper.GetTypeOutput(codeExpression.CreateType);
+            var typeString = _typescriptTypeMapper.GetTypeOutput(_codeExpression.CreateType);
             var arrayCreateString = $"{typeString}({sizeEvaluationString})";
 
-            var initializers = codeExpression.Initializers
+            var initializers = _codeExpression.Initializers
                 .OfType<CodeExpression>()
                 .Select(expression =>
                 {
-                    var initializerExpression = _expressionFactory.GetExpression(codeExpression);
-                    return initializerExpression.Evaluate(codeExpression, options);
+                    var initializerExpression = _expressionFactory.GetExpression(_codeExpression, _options);
+                    return initializerExpression.Evaluate();
                 })
                 .ToList();
 

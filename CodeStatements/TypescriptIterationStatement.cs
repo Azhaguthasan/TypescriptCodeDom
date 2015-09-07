@@ -29,7 +29,7 @@ namespace TypescriptCodeDom.CodeStatements
             var statements = _statement.Statements.GetStatementsFromCollection(_statementFactory, _options);
             var initStatement = _statementFactory.GetStatement(_statement.InitStatement, _options).Expand();
             var incrementStatement = _statementFactory.GetStatement(_statement.IncrementStatement, _options).Expand();
-            var testExpression = _expressionFactory.GetExpression(_statement.TestExpression).Evaluate(_statement.TestExpression, _options);
+            var testExpression = _expressionFactory.GetExpression(_statement.TestExpression, _options).Evaluate();
 
             return $"for ({initStatement}; {testExpression}; {incrementStatement} {{{statements}{Environment.NewLine}}}";
 

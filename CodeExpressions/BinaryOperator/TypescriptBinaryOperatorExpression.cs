@@ -7,23 +7,29 @@ namespace TypescriptCodeDom.CodeExpressions.BinaryOperator
     internal class TypescriptBinaryOperatorExpression : ITypescriptBinaryOperatorExpression
     {
         private readonly IExpressionFactory _expressionFactory;
+        private readonly CodeBinaryOperatorExpression _codeExpression;
+        private readonly CodeGeneratorOptions _options;
 
         public TypescriptBinaryOperatorExpression(
-            IExpressionFactory expressionFactory)
+            IExpressionFactory expressionFactory,
+            CodeBinaryOperatorExpression codeExpression, 
+            CodeGeneratorOptions options)
         {
             _expressionFactory = expressionFactory;
+            _codeExpression = codeExpression;
+            _options = options;
         }
 
 
-        public string Evaluate(CodeBinaryOperatorExpression codeExpression, CodeGeneratorOptions options)
+        public string Evaluate()
         {
-            var leftExpression = _expressionFactory.GetExpression(codeExpression);
-            var leftOperand = leftExpression.Evaluate(codeExpression, options);
+            var leftExpression = _expressionFactory.GetExpression(_codeExpression, _options);
+            var leftOperand = leftExpression.Evaluate();
 
-            var operatorString = GetOperatorString(codeExpression.Operator);
+            var operatorString = GetOperatorString(_codeExpression.Operator);
 
-            var rightExpression = _expressionFactory.GetExpression(codeExpression);
-            var rightOperand = rightExpression.Evaluate(codeExpression, options);
+            var rightExpression = _expressionFactory.GetExpression(_codeExpression, _options);
+            var rightOperand = rightExpression.Evaluate();
 
             return $"{leftOperand} {operatorString} {rightOperand}";
         }

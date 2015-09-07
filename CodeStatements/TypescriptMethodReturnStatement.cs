@@ -25,7 +25,7 @@ namespace TypescriptCodeDom.CodeStatements
 
         public string Expand()
         {
-            var returnExpression = _expressionFactory.GetExpression(_statement.Expression).Evaluate(_statement.Expression, _options);
+            var returnExpression = _expressionFactory.GetExpression(_statement.Expression, _options).Evaluate();
             return $"return {returnExpression};";
         }
     }

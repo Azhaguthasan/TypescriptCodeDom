@@ -2,5 +2,5 @@
 
 namespace TypescriptCodeDom.CodeExpressions.Indexer
 {
-    public interface ITypescriptIndexerExpression : IExpression<CodeIndexerExpression> { }
+    public interface ITypescriptIndexerExpression : IExpression{ }
 }

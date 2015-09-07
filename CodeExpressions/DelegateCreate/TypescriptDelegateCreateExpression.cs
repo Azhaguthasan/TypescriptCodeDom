@@ -8,25 +8,23 @@ namespace TypescriptCodeDom.CodeExpressions.DelegateCreate
     class TypescriptDelegateCreateExpression : ITypescriptDelegateCreateExpression
     {
         private readonly IExpressionFactory _expressionFactory;
-        private readonly CodeDelegateCreateExpression _expression;
+        private readonly CodeDelegateCreateExpression _codeExpression;
         private readonly CodeGeneratorOptions _options;
-        private readonly TypescriptTypeMapper _typescriptTypeMapper;
 
         public TypescriptDelegateCreateExpression(
             IExpressionFactory expressionFactory,
-            CodeDelegateCreateExpression expression,
+            CodeDelegateCreateExpression codeExpression, 
             CodeGeneratorOptions options)
         {
             _expressionFactory = expressionFactory;
-            _expression = expression;
+            _codeExpression = codeExpression;
             _options = options;
-            _typescriptTypeMapper = new TypescriptTypeMapper();
         }
 
-        public string Evaluate(CodeDelegateCreateExpression codeExpression, CodeGeneratorOptions options)
+        public string Evaluate()
         {
-            var expression = _expressionFactory.GetExpression(codeExpression);
-            return $"{expression.Evaluate(codeExpression, options)}.{_expression.MethodName}";
+            var expression = _expressionFactory.GetExpression(_codeExpression, _options);
+            return $"{expression.Evaluate()}.{_codeExpression.MethodName}";
         }
     }
 }

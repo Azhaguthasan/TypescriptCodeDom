@@ -128,13 +128,16 @@
     <Compile Include="CodeTypeMembers\Extensions.cs" />
     <Compile Include="CodeTypeMembers\IMember.cs" />
     <Compile Include="CodeTypeMembers\MemberFactory.cs" />
+    <Compile Include="CodeTypeMembers\TypescriptConstructor.cs" />
     <Compile Include="CodeTypeMembers\TypescriptMemberEvent.cs" />
     <Compile Include="CodeTypeMembers\TypescriptMemberField.cs" />
     <Compile Include="CodeTypeMembers\TypescriptMemberMethod.cs" />
     <Compile Include="CodeTypeMembers\TypescriptMemberProperty.cs" />
     <Compile Include="CodeTypeMembers\TypescriptSnippetTypeMember.cs" />
+    <Compile Include="CodeTypeMembers\TypescriptTypeDeclaration.cs" />
     <Compile Include="CodeTypeParameters\ITypescriptTypeParameter.cs" />
     <Compile Include="CodeTypeParameters\TypescriptTypeParameter.cs" />
+    <Compile Include="Common\Extensions.cs" />
     <Compile Include="Common\Keyword\ITypescriptKeywordsHandler.cs" />
     <Compile Include="Common\TypeMapper\ITypescriptTypeMapper.cs" />
     <Compile Include="Common\Keyword\TypescriptKeywordsHandler.cs" />

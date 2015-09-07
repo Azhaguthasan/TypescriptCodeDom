@@ -2,5 +2,5 @@
 
 namespace TypescriptCodeDom.CodeExpressions.TypeOf
 {
-    public interface ITypescriptTypeOfExpression : IExpression<CodeTypeOfExpression> { }
+    public interface ITypescriptTypeOfExpression : IExpression { }
 }

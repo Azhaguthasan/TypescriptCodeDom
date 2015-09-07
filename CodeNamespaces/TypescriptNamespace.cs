@@ -37,16 +37,32 @@ namespace TypescriptCodeDom.CodeNamespaces
                 commentsExpression = string.Join(Environment.NewLine, comments);
             }
 
-            var importsExpression = codeNamespace.Imports
+            var imports = codeNamespace.Imports
                 .OfType<CodeNamespaceImport>()
                 .Select(import => $"import {import.Namespace};")
                 .ToList();
+            var importsExpression = string.Empty;
+            if (imports.Any())
+            {
+                importsExpression = $"{string.Join(Environment.NewLine, imports)}";
+            }
 
-            var typesExpression = codeNamespace.Types
+            var types = codeNamespace.Types
                 .OfType<CodeTypeDeclaration>()
-                .Select(declaration => $"{Environment.NewLine}{_memberFactory.GetMember(declaration, options).Expand()}")
+                .Select(declaration =>
+                {
+                    declaration.UserData["AddExportKeyword"] = !string.IsNullOrWhiteSpace(codeNamespace.Name);
+                    return $"{Environment.NewLine}{_memberFactory.GetMember(declaration, options).Expand()}";
+                })
                 .ToList();
+            var typesExpression = string.Empty;
+            if (types.Any())
+            {
+                typesExpression = $"{string.Join(Environment.NewLine, types)}";
+            }
 
+            if (string.IsNullOrWhiteSpace(name))
+                return $"{importsExpression}{commentsExpression}{Environment.NewLine}{typesExpression}{Environment.NewLine}";
             return $"{importsExpression}{commentsExpression}{Environment.NewLine}module {name}{{{typesExpression}{Environment.NewLine}}}";
 
         }

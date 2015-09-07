@@ -2,5 +2,5 @@
 
 namespace TypescriptCodeDom.CodeExpressions.MethodReference
 {
-    public interface ITypescriptMethodReferenceExpression : IExpression<CodeMethodReferenceExpression> { }
+    public interface ITypescriptMethodReferenceExpression : IExpression { }
 }

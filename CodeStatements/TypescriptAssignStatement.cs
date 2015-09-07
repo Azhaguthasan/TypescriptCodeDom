@@ -22,10 +22,10 @@ namespace TypescriptCodeDom.CodeStatements
 
         public string Expand()
         {
-            var leftExpression = _expressionFactory.GetExpression(_codeAssignStatement.Left);
-            var rightExpression = _expressionFactory.GetExpression(_codeAssignStatement.Right);
+            var leftExpression = _expressionFactory.GetExpression(_codeAssignStatement.Left, _options);
+            var rightExpression = _expressionFactory.GetExpression(_codeAssignStatement.Right, _options);
 
-            return $"{leftExpression.Evaluate(_codeAssignStatement.Left, _options)} = ${rightExpression.Evaluate(_codeAssignStatement.Right, _options)};";
+            return $"{leftExpression.Evaluate()} = {rightExpression.Evaluate()};";
         }
     }
 }

@@ -3,6 +3,7 @@ using System.CodeDom;
 using System.CodeDom.Compiler;
 using TypescriptCodeDom.CodeExpressions;
 using TypescriptCodeDom.CodeStatements;
+using TypescriptCodeDom.Common;
 using TypescriptCodeDom.Common.TypeMapper;
 
 namespace TypescriptCodeDom.CodeTypeMembers
@@ -31,28 +32,36 @@ namespace TypescriptCodeDom.CodeTypeMembers
 
         public string Expand()
         {
-            var accessModifier = _member.GetAccessModifier();
+            var shouldGeneratePropertyBody = (bool)_member.UserData["GeneratePropertyBody"];
+
+            if (!shouldGeneratePropertyBody)
+                return string.Empty;
+
+            var shouldGenerateAccessModifier = (bool)_member.UserData["GenerateAccessModifier"];
+            var accessModifier = shouldGenerateAccessModifier ? _member.GetAccessModifier() : string.Empty;
             var name = _member.Name;            
             var type = _typescriptTypeMapper.GetTypeOutput(_member.Type);
             var parameters = string.Empty;
+            var parametersAndSetterValueExpression = $"value: {type}";            
 
             if (_member.Parameters != null && _member.Parameters.Count > 0)
             {
-                parameters = string.Join("," , _member.Parameters.GetParametersFromExpressions(_expressionFactory, _options));
+                parameters = _member.Parameters.GetParametersFromExpressions(_expressionFactory, _options);
+                parametersAndSetterValueExpression = $"{parametersAndSetterValueExpression}, {parametersAndSetterValueExpression}";
             }
 
             var getterMethod = string.Empty;
             if (_member.HasGet)
             {
                 var getStatements = _member.GetStatements.GetStatementsFromCollection(_statementFactory, _options);
-                getterMethod = $"{accessModifier} get_{name}({parameters}): {type}{{{getStatements}{Environment.NewLine}}}";
+                getterMethod = $"{accessModifier} get{name}({parameters}): {type}{{{getStatements}{Environment.NewLine}}}";
             }
 
             var setterMethod = string.Empty;
             if (_member.HasSet)
             {
                 var setStatements = _member.SetStatements.GetStatementsFromCollection(_statementFactory, _options);
-                setterMethod = $"{accessModifier} set_{name}({parameters}): {type}{{{setStatements}{Environment.NewLine}}}";
+                setterMethod = $"{accessModifier} set{name}({parametersAndSetterValueExpression}): void{{{setStatements}{Environment.NewLine}}}";
             }
 
             return $"{getterMethod}{Environment.NewLine}{setterMethod}";

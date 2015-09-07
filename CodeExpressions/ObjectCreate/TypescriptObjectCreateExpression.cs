@@ -9,21 +9,28 @@ namespace TypescriptCodeDom.CodeExpressions.ObjectCreate
     class TypescriptObjectCreateExpression : ITypescriptObjectCreateExpression
     {
         private readonly IExpressionFactory _expressionFactory;
+        private readonly CodeObjectCreateExpression _codeExpression;
+        private readonly CodeGeneratorOptions _options;
         private ITypescriptTypeMapper _typescriptTypeMapper;
 
         public TypescriptObjectCreateExpression(
-            IExpressionFactory expressionFactory, ITypescriptTypeMapper typescriptTypeMapper)
+            IExpressionFactory expressionFactory, 
+            CodeObjectCreateExpression codeExpression, 
+            CodeGeneratorOptions options, 
+            ITypescriptTypeMapper typescriptTypeMapper)
         {
             _expressionFactory = expressionFactory;
+            _codeExpression = codeExpression;
+            _options = options;
             _typescriptTypeMapper = typescriptTypeMapper;
         }
 
-        public string Evaluate(CodeObjectCreateExpression codeExpression, CodeGeneratorOptions options)
+        public string Evaluate()
         {
-            var type = _typescriptTypeMapper.GetTypeOutput(codeExpression.CreateType);
-            var parameters = codeExpression.Parameters.GetParametersFromExpressions(_expressionFactory, options);
+            var type = _typescriptTypeMapper.GetTypeOutput(_codeExpression.CreateType);
+            var parameters = _codeExpression.Parameters.GetParametersFromExpressions(_expressionFactory, _options);
 
-            return $"new {type}({string.Join(",", parameters)})";
+            return $"new {type}({parameters})";
         }
     }
 }

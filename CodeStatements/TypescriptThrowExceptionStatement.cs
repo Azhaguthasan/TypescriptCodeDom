@@ -23,7 +23,7 @@ namespace TypescriptCodeDom.CodeStatements
 
         public string Expand()
         {
-            var throwExpression = _expressionFactory.GetExpression(_statement.ToThrow).Evaluate(_statement.ToThrow, _options);
+            var throwExpression = _expressionFactory.GetExpression(_statement.ToThrow, _options).Evaluate();
             return $"throw {throwExpression};";
         }
     }

@@ -2,5 +2,5 @@
 
 namespace TypescriptCodeDom.CodeExpressions.PropertySetValue
 {
-    public interface ITypescriptPropertySetValueReferenceExpression : IExpression<CodePropertySetValueReferenceExpression> { }
+    public interface ITypescriptPropertySetValueReferenceExpression : IExpression { }
 }

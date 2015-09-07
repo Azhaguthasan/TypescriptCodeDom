@@ -5,10 +5,21 @@ namespace TypescriptCodeDom.CodeExpressions.Primitive
 {
     class TypescriptPrimitiveExpression : ITypescriptPrimitiveExpression
     {
-        public string Evaluate(CodePrimitiveExpression codeExpression, CodeGeneratorOptions options)
+        private readonly CodePrimitiveExpression _codeExpression;
+        private readonly CodeGeneratorOptions _options;
+
+        public TypescriptPrimitiveExpression(
+            CodePrimitiveExpression codeExpression, 
+            CodeGeneratorOptions options)
         {
-            var expressionValue = codeExpression.Value.ToString();
-            return codeExpression.Value is string ? $"\"{codeExpression.Value}\"" : expressionValue;
+            _codeExpression = codeExpression;
+            _options = options;
+        }
+
+        public string Evaluate()
+        {
+            var expressionValue = _codeExpression.Value.ToString();
+            return _codeExpression.Value is string ? $"\"{_codeExpression.Value}\"" : expressionValue;
         }
     }
 }

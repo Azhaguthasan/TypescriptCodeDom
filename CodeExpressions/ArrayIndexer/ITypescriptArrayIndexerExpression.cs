@@ -2,5 +2,5 @@ using System.CodeDom;
 
 namespace TypescriptCodeDom.CodeExpressions.ArrayIndexer
 {
-    public interface ITypescriptArrayIndexerExpression : IExpression<CodeArrayIndexerExpression> { }
+    public interface ITypescriptArrayIndexerExpression : IExpression { }
 }

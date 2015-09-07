@@ -9,6 +9,9 @@ namespace TypescriptCodeDom.CodeStatements
     {
         public static string GetStatementsFromCollection(this CodeStatementCollection statementCollection, IStatementFactory statementFactory, CodeGeneratorOptions options)
         {
+            if (statementCollection.Count <= 0)
+                return string.Empty;
+
             return statementCollection
                 .OfType<CodeStatement>()
                 .Select(statement =>

@@ -2,5 +2,5 @@ using System.CodeDom;
 
 namespace TypescriptCodeDom.CodeExpressions.Cast
 {
-    public interface ITypescriptCastExpression : IExpression<CodeCastExpression> { }
+    public interface ITypescriptCastExpression : IExpression { }
 }

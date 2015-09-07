@@ -2,5 +2,5 @@
 
 namespace TypescriptCodeDom.CodeExpressions.DefaultValue
 {
-    public interface ITypescriptDefaultValueExpression : IExpression<CodeDefaultValueExpression> { }
+    public interface ITypescriptDefaultValueExpression : IExpression { }
 }
