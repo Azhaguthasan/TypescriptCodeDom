@@ -78,6 +78,8 @@ namespace TypescriptCodeDom.Common.TypeMapper
 
             if (_arrayRegex.IsMatch(type.BaseType))
                 typeOutputString = GetArrayType(type.BaseType, typeOutputString);
+            else if (type.ArrayRank > 0)
+                typeOutputString = GetArrayString(typeOutputString, type.ArrayRank);
                         
             return typeOutputString;
         }
