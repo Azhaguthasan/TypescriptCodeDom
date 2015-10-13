@@ -27,9 +27,12 @@ namespace TypescriptCodeDom.CodeTypeMembers
         {
             var isEnum = !(bool)_member.UserData["GenerateFieldType"];
             var shouldGenerateAccessModifier = (bool)_member.UserData["GenerateAccessModifier"];
+            var initializationExpression = _expressionFactory.GetExpression(_member.InitExpression, new System.CodeDom.Compiler.CodeGeneratorOptions()).Evaluate();
 
             if (isEnum)
-                return $"{_member.Name},";
+            {
+                return initializationExpression==null? $"{_member.Name},":$"{_member.Name}={initializationExpression},";
+            }
 
             string fieldDeclaration = $"{_member.Name.ConvertPascalCaseToCamelCase()}: {_typescriptTypeMapper.GetTypeOutput(_member.Type)};";
             var accessModifier = shouldGenerateAccessModifier ? _member.GetAccessModifier() : string.Empty;
