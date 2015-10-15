@@ -76,6 +76,10 @@ namespace TypescriptCodeDom.CodeExpressions
 
         public IExpression GetExpression(CodeExpression expression, CodeGeneratorOptions options)
         {
+            if (expression==null)
+            {
+                throw new ArgumentNullException("expression");
+            }
             return _expressionMap[expression.GetType()](expression, options);
         }
     }
