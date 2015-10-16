@@ -40,8 +40,8 @@ namespace TypescriptCodeDom.CodeTypeMembers
 
         private void ConstructMembers()
         {
-            _memberMap[typeof(CodeMemberEvent)] = (member, options) => new TypescriptMemberEvent(_expressionFactory, _typescriptTypeMapper, (CodeMemberEvent)member);
-            _memberMap[typeof(CodeMemberField)] = (member, options) => new TypescriptMemberField(_expressionFactory, _typescriptTypeMapper, (CodeMemberField)member);
+            _memberMap[typeof(CodeMemberEvent)] = (member, options) => new TypescriptMemberEvent(_expressionFactory, _typescriptTypeMapper, (CodeMemberEvent)member, options);
+            _memberMap[typeof(CodeMemberField)] = (member, options) => new TypescriptMemberField(_expressionFactory, _typescriptTypeMapper, (CodeMemberField)member, options);
             _memberMap[typeof(CodeMemberMethod)] = (member, options) => new TypescriptMemberMethod(_expressionFactory, _statementFactory, _typescriptTypeMapper,_typescriptTypeParameter, (CodeMemberMethod)member, options);
             _memberMap[typeof(CodeConstructor)] = (member, options) => new TypescriptConstructor(_expressionFactory, _statementFactory, (CodeConstructor)member, options);
             _memberMap[typeof(CodeMemberProperty)] = (member, options) => new TypescriptMemberProperty((CodeMemberProperty)member, _statementFactory, _expressionFactory,_typescriptTypeMapper, options);

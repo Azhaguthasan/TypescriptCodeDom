@@ -55,7 +55,7 @@ namespace TypescriptCodeDom.CodeTypeMembers
                     member.UserData["GenerateAccessModifier"] = !_typeDeclaration.IsInterface;
                     member.UserData["GenerateMethodBody"] = !_typeDeclaration.IsInterface;
                     member.UserData["GeneratePropertyBody"] = !_typeDeclaration.IsInterface;
-                    return _memberFactory.GetMember(member, _options).Expand();
+                    return _options.IndentString + _memberFactory.GetMember(member, _options).Expand();
                 })
                 .ToList();
 
@@ -85,7 +85,7 @@ namespace TypescriptCodeDom.CodeTypeMembers
                 baseTypesExpression = $" extends {string.Join(",", baseTypes)}";
             }
 
-            return $"{accessModifier}{typeType} {name}{typeParametersExpression}{baseTypesExpression}{{{Environment.NewLine}{membersExpression}{Environment.NewLine}}}";
+            return _options.IndentString + $"{accessModifier}{typeType} {name}{typeParametersExpression}{baseTypesExpression}{{{Environment.NewLine}{membersExpression}{Environment.NewLine}{_options.IndentString}}}";
 
         }
 
