@@ -22,6 +22,7 @@ namespace TypescriptCodeDom.CodeExpressions.Cast
             _codeExpression = codeExpression;
             _options = options;
             _typescriptTypeMapper = typescriptTypeMapper;
+            System.Diagnostics.Debug.WriteLine("TypescriptCastExpression Created");
         }
 
 

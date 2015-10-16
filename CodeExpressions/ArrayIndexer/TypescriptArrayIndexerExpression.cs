@@ -18,6 +18,7 @@ namespace TypescriptCodeDom.CodeExpressions.ArrayIndexer
             _expressionFactory = expressionFactory;
             _codeExpression = codeExpression;
             _options = options;
+            System.Diagnostics.Debug.WriteLine("TypescriptArrayIndexerExpression Created");
         }
 
         public string Evaluate()

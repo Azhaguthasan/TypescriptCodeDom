@@ -14,6 +14,7 @@ namespace TypescriptCodeDom.CodeExpressions.PropertySetValue
         {
             _codeExpression = codeExpression;
             _options = options;
+            System.Diagnostics.Debug.WriteLine("TypescriptPropertySetValueReferenceExpression Created");
         }
 
         public string Evaluate()

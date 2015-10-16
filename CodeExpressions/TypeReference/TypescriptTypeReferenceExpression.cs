@@ -19,6 +19,7 @@ namespace TypescriptCodeDom.CodeExpressions.TypeReference
             _codeExpression = codeExpression;
             _options = options;
             _typescriptTypeMapper = typescriptTypeMapper;
+            System.Diagnostics.Debug.WriteLine("TypescriptTypeReferenceExpression Created");
         }
 
         public string Evaluate()

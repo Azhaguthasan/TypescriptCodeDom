@@ -17,6 +17,7 @@ namespace TypescriptCodeDom.CodeExpressions.Direction
             _expressionFactory = expressionFactory;
             _codeExpression = codeExpression;
             _options = options;
+            System.Diagnostics.Debug.WriteLine("TypescriptDirectionExpression Created");
         }
 
         public string Evaluate()

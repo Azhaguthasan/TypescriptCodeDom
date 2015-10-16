@@ -18,6 +18,7 @@ namespace TypescriptCodeDom.CodeExpressions.FieldReference
             _expressionFactory = expressionFactory;
             _codeExpression = codeExpression;
             _options = options;
+            System.Diagnostics.Debug.WriteLine("TypescriptFieldReferenceExpression Created");
         }
 
         public string Evaluate()

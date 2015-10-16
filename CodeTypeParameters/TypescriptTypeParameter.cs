@@ -12,6 +12,7 @@ namespace TypescriptCodeDom.CodeTypeParameters
             ITypescriptTypeMapper typescriptTypeMapper)
         {
             _typescriptTypeMapper = typescriptTypeMapper;
+            System.Diagnostics.Debug.WriteLine("TypescriptTypeParameter Created");
         }
 
         public string Evaluate(CodeTypeParameter codeTypeParameter)

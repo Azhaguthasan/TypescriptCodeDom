@@ -16,6 +16,7 @@ namespace TypescriptCodeDom.CodeStatements
             _expressionFactory = expressionFactory;
             _statementMap = new Dictionary<Type, Func<CodeStatement, CodeGeneratorOptions, IStatement>>();
             ConstructStatementsMap();
+            System.Diagnostics.Debug.WriteLine("StatementFactory Created");
         }
 
         private void ConstructStatementsMap()

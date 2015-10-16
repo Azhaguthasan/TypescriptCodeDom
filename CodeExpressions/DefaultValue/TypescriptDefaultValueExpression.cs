@@ -19,6 +19,7 @@ namespace TypescriptCodeDom.CodeExpressions.DefaultValue
             _codeExpression = codeExpression;
             _options = options;
             _typescriptTypeMapper = typescriptTypeMapper;
+            System.Diagnostics.Debug.WriteLine("TypescriptDefaultValueExpression Created");
         }
 
         public string Evaluate()

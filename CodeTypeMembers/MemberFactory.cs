@@ -36,6 +36,8 @@ namespace TypescriptCodeDom.CodeTypeMembers
             _memberMap = new Dictionary<Type, Func<CodeTypeMember, CodeGeneratorOptions, IMember>>();
 
             ConstructMembers();
+            System.Diagnostics.Debug.WriteLine("MemberFactory Created");
+
         }
 
         private void ConstructMembers()

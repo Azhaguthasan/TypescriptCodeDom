@@ -14,6 +14,7 @@ namespace TypescriptCodeDom.CodeExpressions.ThisReference
         {
             _codeExpression = codeExpression;
             _options = options;
+            System.Diagnostics.Debug.WriteLine("TypescriptThisReferenceExpression Created");
         }
 
         public string Evaluate()

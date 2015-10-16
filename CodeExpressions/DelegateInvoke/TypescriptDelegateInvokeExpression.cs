@@ -18,6 +18,7 @@ namespace TypescriptCodeDom.CodeExpressions.DelegateInvoke
             _expressionFactory = expressionFactory;
             _codeExpression = codeExpression;
             _options = options;
+            System.Diagnostics.Debug.WriteLine("TypescriptDelegateInvokeExpression Created");
         }
 
         public string Evaluate()

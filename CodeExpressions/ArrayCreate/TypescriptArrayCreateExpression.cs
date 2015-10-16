@@ -23,6 +23,7 @@ namespace TypescriptCodeDom.CodeExpressions.ArrayCreate
             _codeExpression = codeExpression;
             _options = options;
             _typescriptTypeMapper = typescriptTypeMapper;
+            System.Diagnostics.Debug.WriteLine("TypescriptArrayCreateExpression Created");
         }
 
         public string Evaluate()

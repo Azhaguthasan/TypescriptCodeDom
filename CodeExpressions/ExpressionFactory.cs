@@ -43,6 +43,7 @@ namespace TypescriptCodeDom.CodeExpressions
             _expressionMap = new Dictionary<Type, Func<CodeExpression, CodeGeneratorOptions, IExpression>>();
 
             ConstructExpressions();
+            System.Diagnostics.Debug.WriteLine("ExpressionFactory Created");
         }
 
         private void ConstructExpressions()

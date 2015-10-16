@@ -19,7 +19,7 @@ namespace TypescriptCodeDom.CodeNamespaces
         {
             _statementFactory = statementFactory;
             _memberFactory = memberFactory;
-            
+            System.Diagnostics.Debug.WriteLine("Typescriptnamespace Created");
         }
 
         public string Expand(CodeNamespace codeNamespace, CodeGeneratorOptions options)

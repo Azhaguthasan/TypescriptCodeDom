@@ -17,6 +17,7 @@ namespace TypescriptCodeDom.CodeExpressions.PropertyReference
             _expressionFactory = expressionFactory;
             _codeExpression = codeExpression;
             _options = options;
+            System.Diagnostics.Debug.WriteLine("TypescriptPropertyReferenceExpression Created");
         }
 
 

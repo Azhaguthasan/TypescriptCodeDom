@@ -19,6 +19,7 @@ namespace TypescriptCodeDom.CodeExpressions.TypeOf
             _codeExpression = codeExpression;
             _options = options;
             _typescriptTypeMapper = typescriptTypeMapper;
+            System.Diagnostics.Debug.WriteLine("TypescriptTypeOfExpression Created");
         }
 
 

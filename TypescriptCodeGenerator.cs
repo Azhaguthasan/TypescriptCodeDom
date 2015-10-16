@@ -35,6 +35,8 @@ namespace TypescriptCodeDom
             _expressionFactory = expressionFactory;
             _typescriptNamespace = typescriptNamespace;
             _statementFactory = statementFactory;
+            System.Diagnostics.Debug.WriteLine("TypescriptCodeGenerator Created");
+
         }
 
 

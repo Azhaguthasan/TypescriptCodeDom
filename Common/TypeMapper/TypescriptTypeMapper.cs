@@ -17,6 +17,7 @@ namespace TypescriptCodeDom.Common.TypeMapper
             _typeMap = new Dictionary<string, string>();            
 
             AddAllKnownTypes();
+            System.Diagnostics.Debug.WriteLine("TypescriptTypeMapper Created");
         }
 
         private void AddAllKnownTypes()

@@ -18,6 +18,7 @@ namespace TypescriptCodeDom.CodeExpressions.BinaryOperator
             _expressionFactory = expressionFactory;
             _codeExpression = codeExpression;
             _options = options;
+            System.Diagnostics.Debug.WriteLine("TypescriptBinaryOperatorExpression Created");
         }
 
 

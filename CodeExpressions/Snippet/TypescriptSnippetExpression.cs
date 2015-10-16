@@ -14,6 +14,7 @@ namespace TypescriptCodeDom.CodeExpressions.Snippet
         {
             _codeExpression = codeExpression;
             _options = options;
+            System.Diagnostics.Debug.WriteLine("TypescriptSnippetExpression Created");
         }
 
         public string Evaluate()

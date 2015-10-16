@@ -14,6 +14,7 @@ namespace TypescriptCodeDom.CodeExpressions.Primitive
         {
             _codeExpression = codeExpression;
             _options = options;
+            System.Diagnostics.Debug.WriteLine("TypescriptPrimitiveExpression Created");
         }
 
         public string Evaluate()

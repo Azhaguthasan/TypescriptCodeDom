@@ -18,6 +18,7 @@ namespace TypescriptCodeDom.CodeExpressions.MethodReference
             _expressionFactory = expressionFactory;
             _codeExpression = codeExpression;
             _options = options;
+            System.Diagnostics.Debug.WriteLine("TypescriptMethodReferenceExpression Created");
         }
 
         public string Evaluate()

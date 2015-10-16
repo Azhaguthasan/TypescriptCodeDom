@@ -23,6 +23,7 @@ namespace TypescriptCodeDom.CodeExpressions.ObjectCreate
             _codeExpression = codeExpression;
             _options = options;
             _typescriptTypeMapper = typescriptTypeMapper;
+            System.Diagnostics.Debug.WriteLine("TypescriptObjectCreateExpression Created");
         }
 
         public string Evaluate()

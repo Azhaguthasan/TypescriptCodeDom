@@ -18,6 +18,7 @@ namespace TypescriptCodeDom.CodeExpressions.MethodInvoke
             _expressionFactory = expressionFactory;
             _codeExpression = codeExpression;
             _options = options;
+            System.Diagnostics.Debug.WriteLine("TypescriptMethodInvokeExpression Created");
         }
 
         public string Evaluate()

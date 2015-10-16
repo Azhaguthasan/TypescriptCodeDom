@@ -13,6 +13,7 @@ namespace TypescriptCodeDom.Common.Keyword
 
             AddAllBaseKeywords();
             AddAllPredefinedTypes();
+            System.Diagnostics.Debug.WriteLine("TypescriptKeywordhandler Created");
 
         }
 
