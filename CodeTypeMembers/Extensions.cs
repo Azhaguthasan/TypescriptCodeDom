@@ -6,12 +6,17 @@ namespace TypescriptCodeDom.CodeTypeMembers
     {
         public static string GetAccessModifier(this CodeTypeMember member)
         {
-            string accessModifier = member.Attributes == MemberAttributes.Public
-                ? "public "
-                : member.Attributes == MemberAttributes.Private
-                    ? "private "
-                    : string.Empty;
-            return accessModifier;
+            switch (member.Attributes)
+            {
+                case MemberAttributes.Private:
+                    return "private ";
+                case MemberAttributes.Public:
+                   return "public ";
+                default:
+                    return string.Empty;
+            }
+
+
         }
     }
 }

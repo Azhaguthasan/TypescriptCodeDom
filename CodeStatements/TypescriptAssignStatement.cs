@@ -25,7 +25,7 @@ namespace TypescriptCodeDom.CodeStatements
             var leftExpression = _expressionFactory.GetExpression(_codeAssignStatement.Left, _options);
             var rightExpression = _expressionFactory.GetExpression(_codeAssignStatement.Right, _options);
 
-            return $"{leftExpression.Evaluate()} = {rightExpression.Evaluate()};";
+            return $"{_options.IndentString}{_options.IndentString}{_options.IndentString}{leftExpression.Evaluate()} = {rightExpression.Evaluate()};";
         }
     }
 }

@@ -51,7 +51,7 @@ namespace TypescriptCodeDom.CodeTypeMembers
                 baseContructorArgsExpression = "super();";
             }
 
-            return $"{_member.GetAccessModifier()} constructor({parameters}){{{baseContructorArgsExpression}{statements}{Environment.NewLine}}}";
+            return $"{_options.IndentString}{_member.GetAccessModifier()} constructor({parameters}){{{Environment.NewLine}{baseContructorArgsExpression}{statements}{Environment.NewLine}{_options.IndentString}{_options.IndentString}}}";
 
         }
     }

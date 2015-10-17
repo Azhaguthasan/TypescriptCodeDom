@@ -34,7 +34,7 @@ namespace TypescriptCodeDom.CodeTypeMembers
             {
                 if (_member.InitExpression == null)
                 {
-                    return _options.IndentString+$"{_member.Name},";
+                    return $"{_options.IndentString}{_member.Name},";
                 }
                 else
                 {
@@ -45,7 +45,7 @@ namespace TypescriptCodeDom.CodeTypeMembers
 
             string fieldDeclaration = $"{_member.Name.ConvertPascalCaseToCamelCase()}: {_typescriptTypeMapper.GetTypeOutput(_member.Type)};";
             var accessModifier = shouldGenerateAccessModifier ? _member.GetAccessModifier() : string.Empty;
-            return _options.IndentString + $"{accessModifier}{fieldDeclaration}";
+            return $"{_options.IndentString}{accessModifier}{fieldDeclaration}";
         }
     }
 }

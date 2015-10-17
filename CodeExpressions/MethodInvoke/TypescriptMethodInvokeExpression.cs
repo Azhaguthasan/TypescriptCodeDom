@@ -27,7 +27,7 @@ namespace TypescriptCodeDom.CodeExpressions.MethodInvoke
 
             var parameters = _codeExpression.Parameters.GetParametersFromExpressions(_expressionFactory, _options);
             
-            return $"{methodExpression.Evaluate()}({parameters})";
+            return $"{_options.IndentString}{_options.IndentString}{_options.IndentString}{methodExpression.Evaluate()}({parameters})";
         }
     }
 }

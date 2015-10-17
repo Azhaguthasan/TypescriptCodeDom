@@ -55,10 +55,12 @@ namespace TypescriptCodeDom.CodeTypeMembers
             var shouldGenerateMethodBody = (bool)_member.UserData["GenerateMethodBody"];
             var shouldGenerateAccessModifier = (bool)_member.UserData["GenerateAccessModifier"];
 
-            var accessModifier = shouldGenerateAccessModifier ? _member.GetAccessModifier() : string.Empty;
+            var accessModifier = shouldGenerateAccessModifier ? 
+                _member.GetAccessModifier() 
+                : string.Empty;
             return shouldGenerateMethodBody 
-                ? $"{accessModifier} {_member.Name.ConvertPascalCaseToCamelCase()}{typeParametersExpression}({parameters}): {returnType}{{{Environment.NewLine}{statements}{Environment.NewLine}}}" 
-                : $"{accessModifier} {_member.Name.ConvertPascalCaseToCamelCase()}{typeParametersExpression}({parameters}): {returnType};";
+                ? $"{_options.IndentString}{accessModifier}{_member.Name.ConvertPascalCaseToCamelCase()}{typeParametersExpression}({parameters}): {returnType}{{{Environment.NewLine}{statements}{Environment.NewLine}{_options.IndentString}{_options.IndentString}}}" 
+                : $"{_options.IndentString}{accessModifier}{_member.Name.ConvertPascalCaseToCamelCase()}{typeParametersExpression}({parameters}): {returnType};";
         }
     }
 }

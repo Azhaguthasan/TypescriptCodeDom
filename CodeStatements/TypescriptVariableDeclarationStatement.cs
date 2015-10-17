@@ -33,7 +33,7 @@ namespace TypescriptCodeDom.CodeStatements
             var type = _typescriptTypeMapper.GetTypeOutput(_statement.Type);
             var initializationExpression = _expressionFactory.GetExpression(_statement.InitExpression, _options).Evaluate();
 
-            return $"var {_statement.Name}: {type} = {initializationExpression};}}";
+            return $"{_options.IndentString}{_options.IndentString}{_options.IndentString}var {_statement.Name}: {type} = {initializationExpression};}}";
         }
     }
 }
